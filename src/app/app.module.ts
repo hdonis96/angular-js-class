@@ -11,13 +11,16 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpVote,
+  VoterService,
+  LocationValidator
 
 } from './events/index'
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { TOASTR_TOKEN, Toastr } from './events/shared/toastr.service';
-import { JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective  } from './common/index'
+import { JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index'
 import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
 import { Error404Component } from './errors/404.component';
@@ -43,7 +46,9 @@ let jQuery = window['$']
     CollapsibleWellComponent,
     SimpleModalComponent,
     DurationPipe, 
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpVote,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,8 @@ let jQuery = window['$']
     EventRouteActivator, 
     {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
     EventListResolver,
-    AuthService
+    AuthService,
+    VoterService
   ],
   bootstrap: [EventsAppComponent]
 })
