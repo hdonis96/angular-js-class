@@ -22,15 +22,15 @@ import { NavBarComponent } from './nav/navbar.component';
 import { TOASTR_TOKEN, Toastr } from './events/shared/toastr.service';
 import { JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index'
 import { appRoutes } from './routes';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
-let toastr:Toastr = window['toastr']
-let jQuery = window['$']
+const toastr:Toastr = window['toastr']
+const jQuery = window['$']
 
 
 @NgModule({
@@ -53,7 +53,7 @@ let jQuery = window['$']
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
